@@ -1,203 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Social Media Services</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 <style>
-body {
-    margin:0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-    color: #fff;
-    transition: background 0.5s;
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#0f172a;
+  color:#fff;
 }
-body.light {
-    background: linear-gradient(135deg,#e0eafc,#cfdef3,#e0eafc);
-    color: #111;
+.container{padding:15px}
+.card{
+  background:#111827;
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:12px;
 }
-.container {
-    padding: 20px;
+.btn{
+  background:linear-gradient(135deg,#2563eb,#06b6d4);
+  border:none;
+  padding:12px;
+  width:100%;
+  border-radius:10px;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
 }
-.card {
-    background: #111;
-    border-radius: 20px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 25px rgba(0,255,255,0.5);
-    border: 2px solid #00ffff;
-    display: flex;
-    flex-direction: column;
-    transform: translateY(30px);
-    opacity: 0;
-    transition: all 0.6s ease-out;
+input{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  margin-top:8px;
 }
-.card.visible {
-    transform: translateY(0);
-    opacity: 1;
+.modal{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,.8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
 }
-.card h3 {
-    margin:0 0 10px;
-    display: flex;
-    align-items: center;
-    font-size: 18px;
+.modal-content{
+  background:#020617;
+  padding:20px;
+  border-radius:14px;
+  width:90%;
+  max-width:400px;
 }
-.card h3 i {
-    margin-right: 10px;
-    color:#00ffff;
-}
-.price {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #00ffff;
-}
-.button {
-    width: 100%;
-    padding: 12px;
-    border:none;
-    border-radius: 12px;
-    background: linear-gradient(90deg,#00c6ff,#0072ff);
-    color:#fff;
-    font-size:16px;
-    cursor:pointer;
-    margin-bottom:5px;
-    transition: transform 0.2s, background 0.3s;
-}
-.button:hover {
-    transform: scale(1.05);
-    background: linear-gradient(90deg,#0072ff,#00c6ff);
-}
-input {
-    width:100%;
-    padding:10px;
-    border-radius:8px;
-    border:none;
-    margin-bottom:10px;
-}
-#qr {
-    text-align:center;
-    margin-top:20px;
-}
-#themeSwitch {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    padding:10px 15px;
-    border:none;
-    border-radius:10px;
-    background: linear-gradient(90deg,#00c6ff,#0072ff);
-    color:#fff;
-    cursor:pointer;
-}
+.hide{display:none}
+h3{text-align:center}
+.lang-btn{margin-top:10px}
+.small{font-size:13px;color:#cbd5e1}
 </style>
 </head>
+
 <body>
 
-<button id="themeSwitch">Switch Theme</button>
+<!-- LANGUAGE -->
+<div class="modal" id="langModal">
+  <div class="modal-content">
+    <h3>Select Language</h3>
+    <button class="btn lang-btn" onclick="selectLang()">Hindi</button>
+    <button class="btn lang-btn" onclick="selectLang()">English</button>
+    <button class="btn lang-btn" onclick="selectLang()">বাংলা</button>
+  </div>
+</div>
+
+<!-- INSTRUCTION -->
+<div class="modal hide" id="instModal">
+  <div class="modal-content">
+    <h3>Instructions</h3>
+    <p class="small">
+      1. Service चुनें और Pay पर क्लिक करें<br>
+      2. अपना Social Media URL डालें<br>
+      3. UPI से Payment करें<br>
+      4. UTR डालकर Order Submit करें
+    </p>
+    <button class="btn" onclick="closeInst()">Confirm</button>
+  </div>
+</div>
 
 <div class="container">
 
-<!-- Instagram -->
+<h3>🔥 Social Media Services</h3>
+
 <div class="card">
-<h3><i class="fab fa-instagram"></i>Instagram Followers</h3>
-<p class="price">₹50 / 100 Followers</p>
-<input id="urlInstagram" placeholder="Enter Instagram URL">
-<button class="button" onclick="generateQR('urlInstagram')">Generate QR</button>
-<div id="qrInstagram"></div>
-<button class="button" onclick="showUPI('Instagram Followers',50)">Buy Now ₹50</button>
-<button class="button" onclick="showUPI('Instagram Followers',250)">Buy Now ₹250</button>
+  <b>Instagram Followers</b><br>
+  ₹159 – 10K Followers
+  <button class="btn" onclick="order('Instagram 10K - ₹159')">Pay</button>
 </div>
 
-<!-- YouTube -->
 <div class="card">
-<h3><i class="fab fa-youtube"></i>YouTube Subscribers</h3>
-<p class="price">₹100 / 100 Subscribers</p>
-<input id="urlYouTube" placeholder="Enter YouTube URL">
-<button class="button" onclick="generateQR('urlYouTube')">Generate QR</button>
-<div id="qrYouTube"></div>
-<button class="button" onclick="showUPI('YouTube Subscribers',100)">Buy Now ₹100</button>
-<button class="button" onclick="showUPI('YouTube Subscribers',450)">Buy Now ₹450</button>
+  <b>YouTube Subscribers</b><br>
+  ₹89 – 5K Subscribers
+  <button class="btn" onclick="order('YouTube 5K - ₹89')">Pay</button>
 </div>
 
-<!-- TikTok -->
 <div class="card">
-<h3><i class="fab fa-tiktok"></i>TikTok Likes</h3>
-<p class="price">₹30 / 100 Likes</p>
-<input id="urlTikTok" placeholder="Enter TikTok URL">
-<button class="button" onclick="generateQR('urlTikTok')">Generate QR</button>
-<div id="qrTikTok"></div>
-<button class="button" onclick="showUPI('TikTok Likes',30)">Buy Now ₹30</button>
-<button class="button" onclick="showUPI('TikTok Likes',150)">Buy Now ₹150</button>
+  <b>Facebook Likes</b><br>
+  ₹199 – 20K Likes
+  <button class="btn" onclick="order('Facebook 20K - ₹199')">Pay</button>
 </div>
 
-<!-- Facebook -->
-<div class="card">
-<h3><i class="fab fa-facebook"></i>Facebook Followers</h3>
-<p class="price">₹80 / 100 Followers</p>
-<input id="urlFacebook" placeholder="Enter Facebook URL">
-<button class="button" onclick="generateQR('urlFacebook')">Generate QR</button>
-<div id="qrFacebook"></div>
-<button class="button" onclick="showUPI('Facebook Followers',80)">Buy Now ₹80</button>
-<button class="button" onclick="showUPI('Facebook Followers',400)">Buy Now ₹400</button>
-</div>
+<div class="card hide" id="orderBox">
+  <h3>Complete Payment</h3>
 
-<div id="qr"></div>
+  <label>Social Media URL</label>
+  <input id="url">
+
+  <p class="small">
+    Pay via UPI ID:<br>
+    <b>hh0598332-2@okhdfcbank</b>
+  </p>
+
+  <label>UTR Number</label>
+  <input id="utr">
+
+  <button class="btn" onclick="submitOrder()">Submit Order</button>
+</div>
 
 </div>
 
 <script>
-const upiID = "hh0598332-2@okhdfcbank";
+let service="";
 
-// URL QR Generator
-function generateQR(inputId){
-    let url = document.getElementById(inputId).value;
-    let qrDiv = document.getElementById('qr'+inputId.slice(3));
-    qrDiv.innerHTML = "";
-    if(url==="") return alert("Please enter URL");
-    let img = document.createElement("img");
-    img.src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+encodeURIComponent(url);
-    qrDiv.appendChild(img);
+function selectLang(){
+  document.getElementById("langModal").classList.add("hide");
+  document.getElementById("instModal").classList.remove("hide");
 }
-
-// UPI QR Generator
-function showUPI(service, amount){
-    let qrDiv = document.getElementById('qr');
-    qrDiv.innerHTML = `
-    <h3>Pay ₹${amount} via UPI for ${service}</h3>
-    <img id="upiQR" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=${upiID}&pn=YourName&tn=${encodeURIComponent(service)}&am=${amount}" alt="UPI QR">
-    <p>UPI ID: <strong>${upiID}</strong></p>
-    <button class="button" onclick="downloadQR()">Download QR</button>`;
+function closeInst(){
+  document.getElementById("instModal").classList.add("hide");
 }
-
-// Download QR
-function downloadQR(){
-    const qrImg = document.getElementById('upiQR').src;
-    const link = document.createElement('a');
-    link.href = qrImg;
-    link.download = 'UPI_QR.png';
-    link.click();
+function order(s){
+  service=s;
+  document.getElementById("orderBox").classList.remove("hide");
+  window.scrollTo(0,document.body.scrollHeight);
 }
-
-// Theme Switcher
-document.getElementById('themeSwitch').addEventListener('click', ()=>{
-    document.body.classList.toggle('light');
-});
-
-// Scroll animation
-const cards = document.querySelectorAll('.card');
-window.addEventListener('scroll', checkCards);
-
-function checkCards(){
-    const triggerBottom = window.innerHeight / 5 * 4;
-    cards.forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
-        if(cardTop < triggerBottom){
-            card.classList.add('visible');
-        }
-    });
+function submitOrder(){
+  let url=document.getElementById("url").value;
+  let utr=document.getElementById("utr").value;
+  if(!url || !utr){alert("Fill all details");return;}
+  let msg=`Service: ${service}%0AURL: ${url}%0AUTR: ${utr}`;
+  window.location.href=`https://wa.me/917061496326text=${msg}`;
 }
-checkCards(); // initial check
 </script>
 
 </body>
