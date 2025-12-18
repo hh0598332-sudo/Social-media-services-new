@@ -1,120 +1,171 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Place Order</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Social Media Services</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <style>
-body{
-  margin:0;padding:15px;
-  background:#020617;color:#fff;
-  font-family:Arial,sans-serif
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color: #fff;
+    transition: background 0.5s;
 }
-.card{
-  background:#020617;
-  border:1px solid #1e293b;
-  border-radius:16px;
-  padding:16px
+body.light {
+    background: linear-gradient(135deg,#e0eafc,#cfdef3,#e0eafc);
+    color: #111;
 }
-h1{text-align:center;color:#38bdf8}
-input{
-  width:100%;
-  padding:12px;
-  border-radius:10px;
-  border:none;
-  margin-top:12px
+.container {
+    padding: 20px;
 }
-.btn{
-  width:100%;
-  padding:14px;
-  margin-top:14px;
-  border:none;
-  border-radius:12px;
-  background:#16a34a;
-  color:#fff;
-  font-size:16px;
-  font-weight:bold
+.card {
+    background: #111;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 25px rgba(0,255,255,0.5);
+    border: 2px solid #00ffff;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.6s ease-out;
 }
-.qr{
-  display:none;
-  width:220px;
-  background:#fff;
-  padding:10px;
-  border-radius:14px;
-  margin:15px auto
+.card.visible {
+    transform: translateY(0);
+    opacity: 1;
 }
-.note{
-  display:none;
-  text-align:center;
-  font-size:13px;
-  color:#94a3b8
+.card h3 {
+    margin:0 0 10px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
 }
-.preview{
-  display:none;
-  margin-top:10px;
-  text-align:center
+.card h3 i {
+    margin-right: 10px;
+    color:#00ffff;
 }
-.preview img{
-  max-width:100%;
-  border-radius:12px;
-  margin-top:8px
+.price {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #00ffff;
+}
+.button {
+    width: 100%;
+    padding: 12px;
+    border:none;
+    border-radius: 12px;
+    background: linear-gradient(90deg,#00c6ff,#0072ff);
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+    margin-bottom:5px;
+    transition: transform 0.2s, background 0.3s;
+}
+.button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg,#0072ff,#00c6ff);
+}
+#qr {
+    text-align:center;
+    margin-top:20px;
+}
+#themeSwitch {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding:10px 15px;
+    border:none;
+    border-radius:10px;
+    background: linear-gradient(90deg,#00c6ff,#0072ff);
+    color:#fff;
+    cursor:pointer;
 }
 </style>
 </head>
-
 <body>
 
+<button id="themeSwitch">Switch Theme</button>
+
+<div class="container">
+
 <div class="card">
-<h1>📝 Place Order</h1>
-
-<p><b>Service:</b> <span id="service"></span></p>
-<p><b>Price:</b> ₹<span id="price"></span></p>
-
-<input id="link" placeholder="Paste Instagram / YouTube URL">
-
-<button class="btn" onclick="showQR()">Proceed to Pay</button>
-
-<img id="qr" class="qr"
-src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi://pay?pa=hh0598332-2@okhdfcbank">
-
-<p class="note" id="note">
-Scan QR & complete payment
-</p>
-
-<!-- Screenshot Upload -->
-<div class="preview" id="previewBox">
-  <label><b>Upload Payment Screenshot</b></label>
-  <input type="file" accept="image/*" onchange="previewImage(event)">
-  <p style="font-size:12px;color:#94a3b8">
-    Screenshot sirf verification ke liye hai
-  </p>
-  <img id="previewImg">
+<h3><i class="fab fa-instagram"></i>Instagram Followers</h3>
+<p class="price">₹50 / 100 Followers</p>
+<p class="price">₹250 / 500 Followers</p>
+<button class="button" onclick="showQR('Instagram Followers',50)">Buy Now ₹50</button>
+<button class="button" onclick="showQR('Instagram Followers',250)">Buy Now ₹250</button>
 </div>
+
+<div class="card">
+<h3><i class="fab fa-youtube"></i>YouTube Subscribers</h3>
+<p class="price">₹100 / 100 Subscribers</p>
+<p class="price">₹450 / 500 Subscribers</p>
+<button class="button" onclick="showQR('YouTube Subscribers',100)">Buy Now ₹100</button>
+<button class="button" onclick="showQR('YouTube Subscribers',450)">Buy Now ₹450</button>
+</div>
+
+<div class="card">
+<h3><i class="fab fa-tiktok"></i>TikTok Likes</h3>
+<p class="price">₹30 / 100 Likes</p>
+<p class="price">₹150 / 500 Likes</p>
+<button class="button" onclick="showQR('TikTok Likes',30)">Buy Now ₹30</button>
+<button class="button" onclick="showQR('TikTok Likes',150)">Buy Now ₹150</button>
+</div>
+
+<div class="card">
+<h3><i class="fab fa-facebook"></i>Facebook Followers</h3>
+<p class="price">₹80 / 100 Followers</p>
+<p class="price">₹400 / 500 Followers</p>
+<button class="button" onclick="showQR('Facebook Followers',80)">Buy Now ₹80</button>
+<button class="button" onclick="showQR('Facebook Followers',400)">Buy Now ₹400</button>
+</div>
+
+<div id="qr"></div>
 
 </div>
 
 <script>
-const p=new URLSearchParams(window.location.search);
-document.getElementById("service").innerText=p.get("service");
-document.getElementById("price").innerText=p.get("price");
+const upiID = "hh0598332-2@okhdfcbank";
 
-function showQR(){
-  const link=document.getElementById("link").value;
-  if(link.length<10){
-    alert("Please enter valid URL");
-    return;
-  }
-  document.getElementById("qr").style.display="block";
-  document.getElementById("note").style.display="block";
-  document.getElementById("previewBox").style.display="block";
+function showQR(service, amount){
+    let qrDiv = document.getElementById('qr');
+    qrDiv.innerHTML = `
+    <h3>Pay ₹${amount} via UPI for ${service}</h3>
+    <img id="upiQR" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=${upiID}&pn=YourName&tn=${encodeURIComponent(service)}&am=${amount}" alt="UPI QR">
+    <p>UPI ID: <strong>${upiID}</strong></p>
+    <button class="button" onclick="downloadQR()">Download QR</button>`;
 }
 
-function previewImage(e){
-  const img=document.getElementById("previewImg");
-  img.src=URL.createObjectURL(e.target.files[0]);
-  img.style.display="block";
+function downloadQR(){
+    const qrImg = document.getElementById('upiQR').src;
+    const link = document.createElement('a');
+    link.href = qrImg;
+    link.download = 'UPI_QR.png';
+    link.click();
 }
+
+// Theme Switcher
+document.getElementById('themeSwitch').addEventListener('click', ()=>{
+    document.body.classList.toggle('light');
+});
+
+// Scroll animation
+const cards = document.querySelectorAll('.card');
+window.addEventListener('scroll', checkCards);
+
+function checkCards(){
+    const triggerBottom = window.innerHeight / 5 * 4;
+    cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if(cardTop < triggerBottom){
+            card.classList.add('visible');
+        }
+    });
+}
+checkCards(); // initial check
 </script>
 
 </body>
