@@ -4,175 +4,96 @@
 <meta charset="UTF-8">
 <title>Premium Social Media Services</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 *{box-sizing:border-box}
-body{
-margin:0;
-font-family:'Poppins',Arial,sans-serif;
-background:#0b0b14;
-color:#fff;
-overflow-x:hidden;
-}
-
-/* HEADER */
-header{
-padding:25px 15px;
-text-align:center;
-background:linear-gradient(135deg,#7f00ff,#e100ff);
-animation:slideDown 1s ease;
-}
+body{margin:0;font-family:Poppins,Arial,sans-serif;background:#0b0b14;color:#fff}
+header{padding:22px 14px;text-align:center;background:linear-gradient(135deg,#7f00ff,#e100ff)}
 header h1{margin:0;font-size:26px}
 header p{margin:6px 0 0;font-size:14px;opacity:.9}
 
-/* LUXURY TEXT */
-.luxury{
-text-align:center;
-padding:12px;
-font-size:13px;
+.luxury{padding:8px;text-align:center;font-size:13px;
 background:linear-gradient(90deg,#ffd700,#ffb347);
--webkit-background-clip:text;
-color:transparent;
-animation:glow 2s infinite alternate;
-}
+-webkit-background-clip:text;color:transparent}
 
-/* LIVE ORDERS */
-.live{
-background:#111122;
-padding:8px;
-font-size:12px;
-overflow:hidden;
-white-space:nowrap;
-}
-.live span{
-display:inline-block;
-padding-left:100%;
-animation:scroll 18s linear infinite;
-}
-@keyframes scroll{
-from{transform:translateX(0)}
-to{transform:translateX(-100%)}
-}
+#counter{background:#111122;text-align:center;padding:8px;font-size:14px}
 
-/* SECTION */
-.section{padding:15px}
+.section{padding:14px}
+.box{background:#161627;border-radius:16px;padding:16px}
 
-/* CARDS */
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:14px;
-animation:fadeIn 1.2s ease;
-}
-.card{
-background:#161627;
-border-radius:14px;
-padding:18px;
-text-align:center;
-cursor:pointer;
-transition:.3s;
-}
-.card:hover{
-transform:translateY(-6px) scale(1.05);
-box-shadow:0 10px 25px rgba(0,0,0,.6);
-}
-.card h3{margin:0;font-size:16px}
+h4{margin:10px 0 6px;font-size:14px}
 
-/* FORM BOX */
-.box{
-background:#161627;
-border-radius:16px;
-padding:16px;
-margin-top:10px;
-animation:fadeUp 1s ease;
-}
-.box h4{margin:10px 0 6px;font-size:14px}
-
-/* INPUTS */
-input{
+select,input{
 width:100%;
 padding:11px;
 border:none;
 border-radius:10px;
-outline:none;
 margin-bottom:8px;
-font-size:14px;
+font-size:14px
 }
 
-/* CHECKBOX */
+input[readonly]{opacity:.85}
+
+.upi{
+margin-top:8px;
+padding:10px;
+border-radius:10px;
+background:#0d0d1a;
+text-align:center;
+font-size:14px
+}
+
+.qr{text-align:center;margin-top:10px}
+.qr img{
+width:170px;
+background:#fff;
+border-radius:12px;
+padding:8px
+}
+
 .check{
 display:flex;
 align-items:center;
 gap:8px;
 font-size:13px;
-margin:6px 0;
+margin:6px 0
 }
 
-/* BUTTON */
 button{
 width:100%;
 padding:13px;
 border:none;
 border-radius:12px;
-font-size:16px;
-color:#fff;
-cursor:pointer;
 background:linear-gradient(135deg,#ff512f,#dd2476);
-opacity:.4;
+color:#fff;
+font-size:16px;
+cursor:pointer;
+opacity:.4
 }
-button.active{
-opacity:1;
-animation:pulse 1.8s infinite;
-}
+button.active{opacity:1}
 
-/* UPI */
-.upi{
-margin-top:10px;
-padding:10px;
-border-radius:10px;
-background:#0d0d1a;
+footer{text-align:center;font-size:12px;opacity:.6;padding:10px}
+
+/* SUCCESS POPUP */
+#successPopup{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,.7);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999
+}
+#successPopup div{
+background:#161627;
+padding:25px;
+border-radius:16px;
 text-align:center;
-font-size:14px;
+animation:pop .4s ease
 }
-
-/* QR */
-.qr{
-margin-top:12px;
-text-align:center;
-}
-.qr img{
-width:160px;
-border-radius:12px;
-background:#fff;
-padding:8px;
-}
-
-/* FOOTER */
-footer{
-text-align:center;
-font-size:12px;
-opacity:.6;
-padding:12px;
-}
-
-/* ANIMATIONS */
-@keyframes slideDown{
-from{transform:translateY(-40px);opacity:0}
-to{transform:translateY(0);opacity:1}
-}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes fadeUp{
-from{transform:translateY(30px);opacity:0}
-to{transform:translateY(0);opacity:1}
-}
-@keyframes glow{
-from{text-shadow:0 0 5px #ffd700}
-to{text-shadow:0 0 15px #ffb347}
-}
-@keyframes pulse{
-0%{box-shadow:0 0 0 0 rgba(255,81,47,.6)}
-70%{box-shadow:0 0 0 15px rgba(255,81,47,0)}
-100%{box-shadow:0 0 0 0 rgba(255,81,47,0)}
+@keyframes pop{
+from{transform:scale(.7);opacity:0}
+to{transform:scale(1);opacity:1}
 }
 </style>
 </head>
@@ -185,46 +106,56 @@ to{text-shadow:0 0 15px #ffb347}
 </header>
 
 <div class="luxury">
-⚡ Fast Delivery • Secure Payments • Live Orders • Trusted Service ⚡
+⚡ Fast Delivery • Secure Payments • Live Orders • Trusted ⚡
 </div>
 
-<div class="live">
-<span id="liveText"></span>
-</div>
-
-<div class="section">
-<div class="cards">
-<div class="card" onclick="setService('Instagram Views 10K - ₹99')"><h3>Instagram</h3></div>
-<div class="card" onclick="setService('YouTube Subscribers 5K - ₹89')"><h3>YouTube</h3></div>
-<div class="card" onclick="setService('Facebook Likes - ₹79')"><h3>Facebook</h3></div>
-<div class="card" onclick="setService('Telegram Members 1K - ₹99')"><h3>Telegram</h3></div>
-</div>
+<div id="counter">
+🔥 Today Orders: <b id="orderCount">128</b>
 </div>
 
 <div class="section">
 <div class="box">
 
-<h4>Selected Service</h4>
-<input id="service" readonly>
+<h4>Select Service</h4>
+<select id="service" onchange="calcPrice()">
+<option value="">Select Service</option>
+<option value="insta_views">Instagram Views</option>
+<option value="insta_likes">Instagram Likes</option>
+<option value="insta_followers">Instagram Followers</option>
+<option value="yt_views">YouTube Views</option>
+<option value="yt_likes">YouTube Likes</option>
+<option value="yt_subs">YouTube Subscribers</option>
+<option value="fb_views">Facebook Views</option>
+<option value="fb_likes">Facebook Likes</option>
+<option value="fb_followers">Facebook Followers</option>
+<option value="tg_members">Telegram Members</option>
+<option value="tg_views">Telegram Views</option>
+</select>
+
+<h4>Enter Quantity (Custom)</h4>
+<input id="qty" type="number" placeholder="e.g. 1500" oninput="calcPrice()">
 
 <h4>Profile / Video URL</h4>
 <input id="url" placeholder="https://">
+
+<h4>Total Price</h4>
+<input id="price" readonly placeholder="₹0">
 
 <h4>UTR Number</h4>
 <input id="utr" placeholder="UTR Number">
 
 <div class="upi">
-<b>UPI ID:</b><br>
+<b>UPI ID</b><br>
 hh0598332-2@okhdfcbank
 </div>
 
 <div class="qr">
-<img id="qrimg">
+<img id="qr">
 </div>
 
 <div class="check">
-<input type="checkbox" id="paid" onchange="checkPaid()">
-<label for="paid">I have completed the payment</label>
+<input type="checkbox" id="paid" onchange="toggleBtn()">
+<label>I have completed the payment</label>
 </div>
 
 <button id="submitBtn" onclick="sendOrder()">Submit Order</button>
@@ -232,59 +163,67 @@ hh0598332-2@okhdfcbank
 </div>
 </div>
 
-<footer>
-© Premium Social Media Services
-</footer>
+<footer>© Premium Social Media Services</footer>
+
+<!-- PAYMENT SUCCESS POPUP -->
+<div id="successPopup">
+<div>
+<h3 style="color:#4caf50">✅ Payment Successful</h3>
+<p>Your order is being processed</p>
+</div>
+</div>
 
 <script>
-/* LIVE ORDERS */
-const orders=[
-"Instagram Views 10K ordered",
-"YouTube 5K Subscribers ordered",
-"Telegram 1K Members ordered",
-"Facebook Likes ordered",
-"Instagram Followers ordered"
-];
-let i=0;
+/* LIVE COUNTER */
+let count=128;
 setInterval(()=>{
-document.getElementById("liveText").innerText="🔥 "+orders[i%orders.length]+" • Just Now";
-i++;
-},3000);
+count+=Math.floor(Math.random()*3);
+document.getElementById("orderCount").innerText=count;
+},4000);
+
+/* PRICES PER 1000 */
+const rate={
+insta_views:10, insta_likes:15, insta_followers:25,
+yt_views:12, yt_likes:20, yt_subs:30,
+fb_views:10, fb_likes:18, fb_followers:25,
+tg_members:99, tg_views:9
+};
 
 /* QR */
 const upi="hh0598332-2@okhdfcbank";
-document.getElementById("qrimg").src=
+document.getElementById("qr").src=
 "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa="+upi;
 
-/* SERVICE */
-function setService(name){
-service.value=name;
-window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+function calcPrice(){
+if(service.value && qty.value){
+price.value="₹"+Math.ceil((qty.value/1000)*rate[service.value]);
+}else price.value="₹0";
 }
 
-/* PAYMENT CHECK */
-function checkPaid(){
-const btn=document.getElementById("submitBtn");
-if(paid.checked){
-btn.classList.add("active");
-}else{
-btn.classList.remove("active");
-}
+function toggleBtn(){
+submitBtn.classList.toggle("active",paid.checked);
 }
 
-/* SEND ORDER */
 function sendOrder(){
-if(!paid.checked){alert("Please complete payment first");return;}
-if(!service.value||!url.value||!utr.value){
-alert("Fill all details");return;
+if(!paid.checked||!service.value||!qty.value||!url.value||!utr.value){
+alert("Please fill all details & confirm payment");
+return;
 }
+
+document.getElementById("successPopup").style.display="flex";
+
 let msg=
 "NEW ORDER%0A"+
-"Service: "+service.value+"%0A"+
+"Service: "+service.options[service.selectedIndex].text+"%0A"+
+"Quantity: "+qty.value+"%0A"+
+"Price: "+price.value+"%0A"+
 "URL: "+url.value+"%0A"+
 "UTR: "+utr.value;
 
+setTimeout(()=>{
+document.getElementById("successPopup").style.display="none";
 window.open("https://t.me/yourtelegramusername?text="+msg,"_blank");
+},2000);
 }
 </script>
 
