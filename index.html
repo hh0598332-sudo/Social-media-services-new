@@ -7,21 +7,87 @@
 
 <style>
 body{margin:0;font-family:Arial;background:#0f172a;color:#fff}
-.header{background:#1e293b;padding:15px;text-align:center;font-size:20px;font-weight:bold}
+.hide{display:none}
+
+/* Header */
+.header{
+  background:#1e293b;
+  padding:15px;
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+}
+
+/* Custom text */
+.custom{
+  text-align:center;
+  padding:15px;
+  line-height:1.6;
+  color:#e5e7eb;
+}
+
+/* Layout */
 .container{padding:15px}
-.card{background:#1e293b;border-radius:12px;padding:15px;margin-bottom:15px}
+.card{
+  background:#1e293b;
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:15px
+}
 .title{font-size:16px;font-weight:bold}
 .price{margin-top:6px;color:#22c55e}
-.btn{margin-top:10px;width:100%;padding:10px;border:none;border-radius:8px;background:#2563eb;color:#fff;font-size:16px}
-.qr{display:none;background:#020617;padding:20px;border-radius:12px;margin-top:15px;text-align:center}
+.btn{
+  margin-top:10px;
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  background:#2563eb;
+  color:#fff;
+  font-size:16px
+}
+
+/* QR */
+.qr{
+  display:none;
+  background:#020617;
+  padding:20px;
+  border-radius:12px;
+  margin-top:15px;
+  text-align:center
+}
 .qr img{width:220px}
 .upi{margin-top:10px;color:#38bdf8;word-break:break-all}
 .wa{background:#16a34a;margin-top:10px}
 
 /* Language popup */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:999}
-.modal{background:#fff;color:#000;width:90%;max-width:350px;padding:20px;border-radius:12px;text-align:center}
-.lang{width:100%;padding:10px;margin-top:10px;border:none;border-radius:8px;background:#2563eb;color:#fff}
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999
+}
+.modal{
+  background:#fff;
+  color:#000;
+  width:90%;
+  max-width:360px;
+  padding:20px;
+  border-radius:12px;
+  text-align:center
+}
+.lang{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border:none;
+  border-radius:8px;
+  background:#2563eb;
+  color:#fff
+}
 </style>
 </head>
 
@@ -37,45 +103,55 @@ body{margin:0;font-family:Arial;background:#0f172a;color:#fff}
   </div>
 </div>
 
+<!-- Header -->
 <div class="header">💎 Genuine Followers</div>
+
+<!-- Custom Text (Option 1) -->
+<div class="custom">
+  💎 Genuine Followers Hub<br>
+  🚀 Real & Active Social Media Growth<br>
+  🎯 YouTube • Instagram • Facebook • TikTok<br>
+  💰 Best Price | ⚡ Fast Delivery<br>
+  📲 Pay via UPI & Get Started
+</div>
 
 <div class="container">
 
-<!-- YouTube -->
-<div class="card">
-  <div class="title">▶️ YouTube Subscribers</div>
-  <div class="price">💰 1K Subscribers – ₹250</div>
-  <button class="btn" onclick="openQR()">Pay Now</button>
-</div>
+  <!-- YouTube -->
+  <div class="card">
+    <div class="title">▶️ YouTube Subscribers</div>
+    <div class="price">💰 1K Subscribers – ₹250</div>
+    <button class="btn" onclick="openQR()">Pay Now</button>
+  </div>
 
-<!-- Instagram -->
-<div class="card">
-  <div class="title">📸 Instagram Followers</div>
-  <div class="price">💰 500 Followers – ₹100</div>
-  <button class="btn" onclick="openQR()">Pay Now</button>
-</div>
+  <!-- Instagram -->
+  <div class="card">
+    <div class="title">📸 Instagram Followers</div>
+    <div class="price">💰 500 Followers – ₹100</div>
+    <button class="btn" onclick="openQR()">Pay Now</button>
+  </div>
 
-<!-- Facebook -->
-<div class="card">
-  <div class="title">📘 Facebook Page Likes</div>
-  <div class="price">💰 1K Likes – ₹150</div>
-  <button class="btn" onclick="openQR()">Pay Now</button>
-</div>
+  <!-- Facebook -->
+  <div class="card">
+    <div class="title">📘 Facebook Page Likes</div>
+    <div class="price">💰 1K Likes – ₹150</div>
+    <button class="btn" onclick="openQR()">Pay Now</button>
+  </div>
 
-<!-- TikTok -->
-<div class="card">
-  <div class="title">🎵 TikTok Followers</div>
-  <div class="price">💰 1K Followers – ₹120</div>
-  <button class="btn" onclick="openQR()">Pay Now</button>
-</div>
+  <!-- TikTok -->
+  <div class="card">
+    <div class="title">🎵 TikTok Followers</div>
+    <div class="price">💰 1K Followers – ₹120</div>
+    <button class="btn" onclick="openQR()">Pay Now</button>
+  </div>
 
-<!-- QR -->
-<div class="qr" id="qr">
-  <h3>📷 Scan & Pay</h3>
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=hh0598332-2@okhdfcbank&pn=GenuineFollowers">
-  <div class="upi">UPI ID: hh0598332-2@okhdfcbank</div>
-  <button class="btn wa" onclick="wa()">WhatsApp After Payment</button>
-</div>
+  <!-- QR -->
+  <div class="qr" id="qr">
+    <h3>📷 Scan & Pay</h3>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=hh0598332-2@okhdfcbank&pn=GenuineFollowers">
+    <div class="upi">UPI ID: hh0598332-2@okhdfcbank</div>
+    <button class="btn wa" onclick="wa()">WhatsApp After Payment</button>
+  </div>
 
 </div>
 
