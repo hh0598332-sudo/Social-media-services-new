@@ -1,36 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Genuine Followers</title>
 
 <style>
 body{margin:0;font-family:Arial;background:#f1f5f9}
 .hide{display:none}
 
-/* HEADER */
 .top{background:#6d28d9;color:#fff;padding:15px;text-align:center;font-size:20px;font-weight:bold}
-.head{text-align:center;font-size:18px;margin:15px;font-weight:bold}
+.head{text-align:center;margin:15px;font-size:18px;font-weight:bold}
 
-/* CARD */
-.card{background:#fff;margin:10px;padding:15px;border-radius:14px;display:flex;justify-content:space-between;align-items:center}
+.card{
+ background:#fff;margin:10px;padding:15px;border-radius:14px;
+ display:flex;justify-content:space-between;align-items:center
+}
 .left{display:flex;align-items:center;font-weight:bold}
 .icon{font-size:26px;margin-right:10px}
-.btn{background:#2563eb;color:#fff;border:none;padding:10px 16px;border-radius:10px;font-size:14px}
+.btn{
+ background:#2563eb;color:#fff;border:none;
+ padding:10px 16px;border-radius:10px
+}
 
 /* MODAL */
-.center{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
+.overlay{
+ position:fixed;inset:0;background:rgba(0,0,0,.7);
+ display:flex;align-items:center;justify-content:center;
+ z-index:9999
 }
-.box{background:#fff;width:90%;max-width:400px;padding:20px;border-radius:12px;text-align:center}
-input{width:100%;padding:12px;margin-top:10px;border-radius:8px;border:1px solid #cbd5e1}
+.box{
+ background:#fff;width:90%;max-width:380px;
+ padding:20px;border-radius:12px;text-align:center
+}
+input{width:100%;padding:12px;border-radius:8px;border:1px solid #ccc}
 .timer{color:red;font-size:22px}
 </style>
 </head>
@@ -38,128 +40,120 @@ input{width:100%;padding:12px;margin-top:10px;border-radius:8px;border:1px solid
 <body>
 
 <!-- LANGUAGE -->
-<div class="center" id="lang">
-  <div class="box">
-    <h3>Select Language</h3>
-    <button class="btn" onclick="next()">বাংলা</button>
-    <button class="btn" onclick="next()">English</button>
-    <button class="btn" onclick="next()">हिंदी</button>
-  </div>
+<div class="overlay" id="lang">
+ <div class="box">
+  <h3>Select Language</h3>
+  <button class="btn" onclick="closeAll()">English</button>
+  <button class="btn" onclick="closeAll()">हिंदी</button>
+  <button class="btn" onclick="closeAll()">বাংলা</button>
+ </div>
 </div>
 
 <div class="top">Genuine Followers</div>
 <div class="head">Active Real Services Buy at Best Price ₹</div>
 
-<!-- SERVICES -->
 <div class="card">
-  <div class="left"><span class="icon">📺</span>1k YouTube Subscribers</div>
-  <button class="btn" onclick="pay('1k YouTube Subscribers',250)">Pay ₹250</button>
+ <div class="left"><span class="icon">📺</span>1k YouTube Subscribers</div>
+ <button class="btn" onclick="openURL('1k YouTube',250)">Pay ₹250</button>
 </div>
 
 <div class="card">
-  <div class="left"><span class="icon">📸</span>500 Instagram Followers</div>
-  <button class="btn" onclick="pay('500 Instagram Followers',100)">Pay ₹100</button>
-</div>
-
-<div class="card">
-  <div class="left"><span class="icon">👍</span>1M Facebook Likes</div>
-  <button class="btn" onclick="pay('1M Facebook Likes',149)">Pay ₹149</button>
-</div>
-
-<div class="card">
-  <div class="left"><span class="icon">🎵</span>10k TikTok Followers</div>
-  <button class="btn" onclick="pay('10k TikTok Followers',109)">Pay ₹109</button>
+ <div class="left"><span class="icon">📸</span>500 Instagram Followers</div>
+ <button class="btn" onclick="openURL('500 Instagram',100)">Pay ₹100</button>
 </div>
 
 <!-- URL -->
-<div class="center hide" id="urlBox">
-  <div class="box">
-    <h3>Enter URL</h3>
-    <input id="url" placeholder="Paste your link">
-    <button class="btn" onclick="verify()">Continue</button>
-  </div>
+<div class="overlay hide" id="urlBox">
+ <div class="box">
+  <h3>Enter URL</h3>
+  <input id="url">
+  <br><br>
+  <button class="btn" onclick="verify()">Continue</button>
+ </div>
 </div>
 
 <!-- VERIFY -->
-<div class="center hide" id="verifyBox">
-  <div class="box">
-    <h3>Verifying link…</h3>
-    <p>Please wait</p>
-  </div>
-</div>
-
-<!-- VERIFIED -->
-<div class="center hide" id="verifiedBox">
-  <div class="box">
-    <h3>✔ Link Verified</h3>
-    <button class="btn" onclick="payment()">Continue</button>
-  </div>
+<div class="overlay hide" id="verifyBox">
+ <div class="box">
+  <h3>Verifying…</h3>
+ </div>
 </div>
 
 <!-- PAYMENT -->
-<div class="center hide" id="paymentBox">
-  <div class="box">
-    <h3>Payment Now <span class="timer" id="time">5:00</span></h3>
-    <p><b>UPI ID:</b> hh0598332-2@okhdfcbank</p>
-    <img width="230" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=hh0598332-2@okhdfcbank">
-    <button class="btn" onclick="paid()">Order Detail</button>
-  </div>
+<div class="overlay hide" id="payBox">
+ <div class="box">
+  <h3>Payment Now <span class="timer" id="t">5:00</span></h3>
+  <p><b>UPI:</b> hh0598332-2@okhdfcbank</p>
+  <img width="230"
+   src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=hh0598332-2@okhdfcbank">
+  <br><br>
+  <button class="btn" onclick="confirmPay()">Order Detail</button>
+ </div>
 </div>
 
 <!-- PAID -->
-<div class="center hide" id="paidBox">
-  <div class="box">
-    <h3>Payment done?</h3>
-    <button class="btn" onclick="utrBox()">Yes</button>
-    <button class="btn" style="background:#dc2626">No</button>
-  </div>
+<div class="overlay hide" id="paidBox">
+ <div class="box">
+  <h3>Payment done?</h3>
+  <button class="btn" onclick="openUTR()">Yes</button>
+  <button class="btn" style="background:red">No</button>
+ </div>
 </div>
 
 <!-- UTR -->
-<div class="center hide" id="utrBox">
-  <div class="box">
-    <h3>Enter UTR</h3>
-    <input id="utr" placeholder="UTR Number">
-    <button class="btn" onclick="submit()">Submit</button>
-  </div>
+<div class="overlay hide" id="utrBox">
+ <div class="box">
+  <h3>Enter UTR</h3>
+  <input id="utr">
+  <br><br>
+  <button class="btn" onclick="submit()">Submit</button>
+ </div>
 </div>
 
 <script>
 let service="";
 
-function next(){hideAll()}
-function pay(s){service=s;show("urlBox")}
+function closeAll(){
+ document.querySelectorAll(".overlay").forEach(e=>e.classList.add("hide"))
+}
+
+function openURL(s){
+ service=s;closeAll();
+ document.getElementById("urlBox").classList.remove("hide")
+}
 
 function verify(){
-  show("verifyBox");
-  setTimeout(()=>show("verifiedBox"),2000);
+ closeAll();
+ document.getElementById("verifyBox").classList.remove("hide")
+ setTimeout(()=>{
+  closeAll();
+  startPayment();
+ },2000)
 }
 
-function payment(){
-  show("paymentBox");
-  let t=300;
-  setInterval(()=>{
-    if(t<=0)return;
-    t--;
-    document.getElementById("time").innerText=
-      Math.floor(t/60)+":"+("0"+t%60).slice(-2);
-  },1000);
+function startPayment(){
+ document.getElementById("payBox").classList.remove("hide")
+ let t=300;
+ let i=setInterval(()=>{
+  t--; if(t<=0)clearInterval(i);
+  document.getElementById("t").innerText=
+   Math.floor(t/60)+":"+("0"+t%60).slice(-2)
+ },1000)
 }
 
-function paid(){show("paidBox")}
-function utrBox(){show("utrBox")}
+function confirmPay(){
+ closeAll();
+ document.getElementById("paidBox").classList.remove("hide")
+}
+
+function openUTR(){
+ closeAll();
+ document.getElementById("utrBox").classList.remove("hide")
+}
 
 function submit(){
-  let msg=`Service: ${service}\nURL: ${url.value}\nUTR: ${utr.value}`;
-  location.href=`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(msg)}`;
-}
-
-function hideAll(){
-  document.querySelectorAll(".center").forEach(e=>e.classList.add("hide"));
-}
-function show(id){
-  hideAll();
-  document.getElementById(id).classList.remove("hide");
+ let msg=`Service: ${service}\nURL: ${url.value}\nUTR: ${utr.value}`;
+ location.href="https://wa.me/91XXXXXXXXXX?text="+encodeURIComponent(msg)
 }
 </script>
 
