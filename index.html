@@ -68,6 +68,13 @@ body.light {
     transform: scale(1.05);
     background: linear-gradient(90deg,#0072ff,#00c6ff);
 }
+input {
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    margin-bottom:10px;
+}
 #qr {
     text-align:center;
     margin-top:20px;
@@ -91,36 +98,48 @@ body.light {
 
 <div class="container">
 
+<!-- Instagram -->
 <div class="card">
 <h3><i class="fab fa-instagram"></i>Instagram Followers</h3>
 <p class="price">₹50 / 100 Followers</p>
-<p class="price">₹250 / 500 Followers</p>
-<button class="button" onclick="showQR('Instagram Followers',50)">Buy Now ₹50</button>
-<button class="button" onclick="showQR('Instagram Followers',250)">Buy Now ₹250</button>
+<input id="urlInstagram" placeholder="Enter Instagram URL">
+<button class="button" onclick="generateQR('urlInstagram')">Generate QR</button>
+<div id="qrInstagram"></div>
+<button class="button" onclick="showUPI('Instagram Followers',50)">Buy Now ₹50</button>
+<button class="button" onclick="showUPI('Instagram Followers',250)">Buy Now ₹250</button>
 </div>
 
+<!-- YouTube -->
 <div class="card">
 <h3><i class="fab fa-youtube"></i>YouTube Subscribers</h3>
 <p class="price">₹100 / 100 Subscribers</p>
-<p class="price">₹450 / 500 Subscribers</p>
-<button class="button" onclick="showQR('YouTube Subscribers',100)">Buy Now ₹100</button>
-<button class="button" onclick="showQR('YouTube Subscribers',450)">Buy Now ₹450</button>
+<input id="urlYouTube" placeholder="Enter YouTube URL">
+<button class="button" onclick="generateQR('urlYouTube')">Generate QR</button>
+<div id="qrYouTube"></div>
+<button class="button" onclick="showUPI('YouTube Subscribers',100)">Buy Now ₹100</button>
+<button class="button" onclick="showUPI('YouTube Subscribers',450)">Buy Now ₹450</button>
 </div>
 
+<!-- TikTok -->
 <div class="card">
 <h3><i class="fab fa-tiktok"></i>TikTok Likes</h3>
 <p class="price">₹30 / 100 Likes</p>
-<p class="price">₹150 / 500 Likes</p>
-<button class="button" onclick="showQR('TikTok Likes',30)">Buy Now ₹30</button>
-<button class="button" onclick="showQR('TikTok Likes',150)">Buy Now ₹150</button>
+<input id="urlTikTok" placeholder="Enter TikTok URL">
+<button class="button" onclick="generateQR('urlTikTok')">Generate QR</button>
+<div id="qrTikTok"></div>
+<button class="button" onclick="showUPI('TikTok Likes',30)">Buy Now ₹30</button>
+<button class="button" onclick="showUPI('TikTok Likes',150)">Buy Now ₹150</button>
 </div>
 
+<!-- Facebook -->
 <div class="card">
 <h3><i class="fab fa-facebook"></i>Facebook Followers</h3>
 <p class="price">₹80 / 100 Followers</p>
-<p class="price">₹400 / 500 Followers</p>
-<button class="button" onclick="showQR('Facebook Followers',80)">Buy Now ₹80</button>
-<button class="button" onclick="showQR('Facebook Followers',400)">Buy Now ₹400</button>
+<input id="urlFacebook" placeholder="Enter Facebook URL">
+<button class="button" onclick="generateQR('urlFacebook')">Generate QR</button>
+<div id="qrFacebook"></div>
+<button class="button" onclick="showUPI('Facebook Followers',80)">Buy Now ₹80</button>
+<button class="button" onclick="showUPI('Facebook Followers',400)">Buy Now ₹400</button>
 </div>
 
 <div id="qr"></div>
@@ -130,7 +149,19 @@ body.light {
 <script>
 const upiID = "hh0598332-2@okhdfcbank";
 
-function showQR(service, amount){
+// URL QR Generator
+function generateQR(inputId){
+    let url = document.getElementById(inputId).value;
+    let qrDiv = document.getElementById('qr'+inputId.slice(3));
+    qrDiv.innerHTML = "";
+    if(url==="") return alert("Please enter URL");
+    let img = document.createElement("img");
+    img.src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+encodeURIComponent(url);
+    qrDiv.appendChild(img);
+}
+
+// UPI QR Generator
+function showUPI(service, amount){
     let qrDiv = document.getElementById('qr');
     qrDiv.innerHTML = `
     <h3>Pay ₹${amount} via UPI for ${service}</h3>
@@ -139,6 +170,7 @@ function showQR(service, amount){
     <button class="button" onclick="downloadQR()">Download QR</button>`;
 }
 
+// Download QR
 function downloadQR(){
     const qrImg = document.getElementById('upiQR').src;
     const link = document.createElement('a');
