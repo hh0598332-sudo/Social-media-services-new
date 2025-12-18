@@ -1,115 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Social Media Services</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Social Media Services</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      padding: 15px;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #ffffff;
-    }
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:system-ui,Arial,sans-serif;
+  background:#020617; color:#e5e7eb; padding:14px;
+}
+.header{
+  background:linear-gradient(135deg,#2563eb,#22c55e);
+  border-radius:16px; padding:18px; text-align:center;
+}
+.header h1{margin:0; font-size:22px; color:#fff}
+.header p{margin:6px 0 0; color:#e0f2fe; font-size:14px}
 
-    h1 {
-      text-align: center;
-      color: #38bdf8;
-      margin-bottom: 20px;
-    }
+.section{margin-top:16px}
+.card{
+  background:#020617; border:1px solid #0f172a;
+  border-radius:16px; padding:14px; margin-bottom:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,.35)
+}
+.card h2{
+  margin:0 0 10px; text-align:center; color:#38bdf8
+}
 
-    .card {
-      background: #020617;
-      border-radius: 15px;
-      padding: 15px;
-      margin-bottom: 18px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
+.grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:10px
+}
+.btn{
+  display:flex; align-items:center; justify-content:center;
+  gap:8px; padding:12px; border-radius:12px;
+  text-decoration:none; font-weight:700; color:#fff;
+  background:#0f172a; border:1px solid #1e293b
+}
+.btn.primary{background:#2563eb}
+.btn.green{background:#16a34a}
+.btn.dark{background:#020617}
+.btn small{font-weight:500; opacity:.9}
 
-    .card h2 {
-      margin-top: 0;
-      color: #22c55e;
-      text-align: center;
-    }
+.qr{
+  width:220px; background:#fff; padding:10px;
+  border-radius:14px; display:block; margin:10px auto
+}
 
-    .btn {
-      display: block;
-      text-align: center;
-      background: #2563eb;
-      color: #fff;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.badge{
+  display:inline-block; padding:6px 10px; border-radius:999px;
+  background:#020617; border:1px solid #1e293b; font-size:12px
+}
 
-    .btn:hover {
-      background: #1d4ed8;
-    }
-
-    .qr {
-      display: block;
-      margin: 15px auto;
-      width: 220px;
-      border-radius: 12px;
-      background: #fff;
-      padding: 10px;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 13px;
-      color: #94a3b8;
-      margin-top: 30px;
-    }
-  </style>
+.footer{
+  text-align:center; color:#94a3b8; font-size:12px; margin:22px 0 8px
+}
+</style>
 </head>
 
 <body>
 
-<h1>🔥 Social Media Services 🔥</h1>
+<div class="header">
+  <h1>⚡ Social Media Services</h1>
+  <p>Fast • Affordable • Promotional Services</p>
+</div>
 
-<div class="card">
+<div class="section card">
   <h2>Instagram</h2>
-  <a class="btn" href="#">Followers</a>
-  <a class="btn" href="#">Likes</a>
+  <div class="grid">
+    <a class="btn primary" href="https://wa.me/917061496326?text=Instagram%20Followers%20Order">
+      Followers <small>₹99 / 1K</small>
+    </a>
+    <a class="btn primary" href="https://wa.me/917061496326?text=Instagram%20Likes%20Order">
+      Likes <small>₹49 / 1K</small>
+    </a>
+  </div>
 </div>
 
-<div class="card">
+<div class="section card">
   <h2>YouTube</h2>
-  <a class="btn" href="#">Subscribers</a>
-  <a class="btn" href="#">Views</a>
+  <div class="grid">
+    <a class="btn green" href="https://wa.me/917061496326?text=YouTube%20Subscribers%20Order">
+      Subscribers <small>₹199 / 1K</small>
+    </a>
+    <a class="btn green" href="https://wa.me/917061496326?text=YouTube%20Views%20Order">
+      Views <small>₹29 / 1K</small>
+    </a>
+  </div>
 </div>
 
-<div class="card">
+<div class="section card">
   <h2>Facebook</h2>
-  <a class="btn" href="#">Page Likes</a>
+  <div class="grid">
+    <a class="btn dark" href="https://wa.me/917061496326?text=Facebook%20Page%20Likes%20Order">
+      Page Likes <small>₹99 / 1K</small>
+    </a>
+    <span class="btn dark">
+      Fast Delivery <small>1–24h</small>
+    </span>
+  </div>
 </div>
 
-<div class="card">
+<div class="section card">
   <h2>Payment</h2>
 
-  <!-- QR CODE -->
-  <img
-    class="qr"
+  <!-- AUTO QR (NO UPLOAD NEEDED) -->
+  <img class="qr"
     src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi://pay?pa=hh0598332-2@okhdfcbank"
-    alt="UPI QR Code">
+    alt="UPI QR">
 
-  <a class="btn" href="upi://pay?pa=hh0598332-2@okhdfcbank">
+  <a class="btn primary" href="upi://pay?pa=hh0598332-2@okhdfcbank">
     Pay via UPI
   </a>
-
-  <a class="btn" href="https://wa.me/917061496326">
+  <a class="btn green" href="https://wa.me/917061496326">
     WhatsApp Support
   </a>
+
+  <div style="text-align:center;margin-top:10px">
+    <span class="badge">No Password Required</span>
+    <span class="badge">Promotional</span>
+  </div>
 </div>
 
-<footer>
+<div class="footer">
   © 2025 Social Media Services
-</footer>
+</div>
 
 </body>
 </html>
