@@ -2,16 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>PREMIUM SOCIAL MEDIA</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Social Media</title>
-
-<!-- Font Awesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Arial, Helvetica, sans-serif;
   background:#0b1220;
   color:#fff;
 }
@@ -21,80 +18,63 @@ body{
   padding:15px;
 }
 .card{
-  background:#111a2e;
-  border-radius:18px;
-  padding:18px;
+  background:#121b2f;
+  border-radius:15px;
+  padding:15px;
   margin-bottom:15px;
 }
-h1{text-align:center;margin:10px 0;}
-select,input,button,a{
+h1,h2{text-align:center;margin:10px 0;}
+input,select,button{
   width:100%;
-  padding:14px;
+  padding:12px;
   margin-top:10px;
-  border-radius:12px;
+  border-radius:10px;
   border:none;
-  font-size:16px;
+  font-size:15px;
 }
 input,select{background:#fff;color:#000;}
 button{
-  background:#22c55e;
-  color:#000;
+  background:#2ecc71;
   font-weight:bold;
   cursor:pointer;
 }
-.price{
-  float:right;
-  background:#22c55e;
-  color:#000;
-  padding:4px 10px;
-  border-radius:20px;
-  font-size:14px;
-}
-.hidden{display:none;}
-.qr{text-align:center;margin-top:15px;}
+.qr{display:none;text-align:center;}
+.qr img{width:220px;margin-top:10px;}
 .success{
+  display:none;
   background:#064e3b;
   color:#d1fae5;
-  padding:20px;
-  border-radius:16px;
+  padding:15px;
+  border-radius:12px;
   text-align:center;
 }
-.wa{
-  position:fixed;
-  bottom:15px;
-  right:15px;
-  background:#25D366;
-  color:#000;
-  padding:14px 16px;
-  border-radius:50%;
-  font-weight:bold;
-  text-decoration:none;
-}
-
-/* Social icons */
-.social-icons{
+.pay-icons{
   display:flex;
   justify-content:center;
-  gap:18px;
-  font-size:30px;
-  margin-bottom:10px;
-}
-.ig{color:#E1306C;}
-.fb{color:#1877F2;}
-.yt{color:#FF0000;}
-.tw{color:#1DA1F2;}
-
-/* UPI icons */
-.upi-icons{
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  font-size:26px;
+  gap:15px;
   margin-top:10px;
 }
-.gpay{color:#4285F4;}
-.phonepe{color:#5f259f;}
-.paytm{color:#00baf2;}
+.pay-icons img{
+  height:38px;
+  background:#fff;
+  padding:6px;
+  border-radius:10px;
+}
+.footer{
+  text-align:center;
+  font-size:12px;
+  opacity:.7;
+}
+.url-ok{
+  color:#2ecc71;
+  font-size:14px;
+  display:none;
+}
+.url-bad{
+  color:#ff6b6b;
+  font-size:14px;
+  display:none;
+}
 </style>
 </head>
 
@@ -103,95 +83,54 @@ button{
 
 <h1>🔥 PREMIUM SOCIAL MEDIA 🔥</h1>
 
-<div class="social-icons">
-  <i class="fab fa-instagram ig"></i>
-  <i class="fab fa-facebook fb"></i>
-  <i class="fab fa-youtube yt"></i>
-  <i class="fab fa-twitter tw"></i>
-</div>
-
 <div class="card">
 ✔ Real-looking Engagement<br>
 ✔ No Password Required<br>
-✔ 24x7 WhatsApp Support<br>
-✔ Refund if not started yet
-</div>
-
-<!-- PRICE LIST -->
-<div class="card">
-<b>📸 Instagram</b><br><br>
-500 Followers <span class="price">₹150</span><br><br>
-1000 Followers <span class="price">₹300</span><br><br>
-500 Likes <span class="price">₹80</span><br><br>
-1000 Views <span class="price">₹70</span>
+✔ Fast Delivery<br>
+✔ 24×7 WhatsApp Support<br>
+✔ Refund if not started
 </div>
 
 <div class="card">
-<b>📘 Facebook</b><br><br>
-500 Followers <span class="price">₹150</span><br><br>
-1000 Followers <span class="price">₹300</span>
-</div>
-
-<div class="card">
-<b>▶ YouTube</b><br><br>
-500 Subscribers <span class="price">₹200</span><br><br>
-1000 Views <span class="price">₹120</span>
-</div>
-
-<!-- ORDER -->
-<div class="card" id="orderBox">
-<b>📝 Place Order</b>
+<h2>📝 Place Order</h2>
 
 <select id="service">
-<option>Instagram Followers</option>
-<option>Instagram Likes</option>
-<option>Instagram Views</option>
-<option>Facebook Followers</option>
-<option>YouTube Subscribers</option>
-<option>YouTube Views</option>
-<option>Twitter Followers</option>
+<option value="">Select Service</option>
+<option value="Instagram Followers|0.30">Instagram Followers</option>
+<option value="Instagram Likes|0.15">Instagram Likes</option>
+<option value="Instagram Views|0.07">Instagram Views</option>
+<option value="Facebook Followers|0.30">Facebook Followers</option>
+<option value="YouTube Subscribers|0.40">YouTube Subscribers</option>
+<option value="YouTube Views|0.12">YouTube Views</option>
+<option value="Twitter Followers|0.30">Twitter Followers</option>
 </select>
 
 <input type="number" id="amount" placeholder="Enter Amount ₹">
-<input type="text" id="qty" placeholder="Estimated Quantity" readonly>
+
+<input type="text" id="quantity" placeholder="Estimated Quantity" readonly>
+
 <input type="text" id="url" placeholder="Profile / Video URL">
+<div class="url-ok" id="urlOk">✔ Valid URL</div>
+<div class="url-bad" id="urlBad">✖ Invalid URL</div>
+
+<button onclick="showPayment()">Proceed to Pay</button>
+
+<div class="qr" id="qrBox">
+<p><b>Scan & Pay via UPI</b></p>
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=hh0598332-2@okhdfcbank">
+
+<div class="pay-icons">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/PhonePe_Logo.png" alt="PhonePe">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Google_Pay_Logo.svg" alt="GPay">
+</div>
+
 <input type="text" id="utr" placeholder="Enter UTR Number">
-
-<div class="qr hidden" id="qrBox">
-<p><b>Pay via UPI</b></p>
-
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=hh0598332-2@okhdfcbank" width="200">
-
-<!-- PHONEPE BUTTON -->
-<a id="phonepeBtn" href="#" style="
-display:block;
-margin:12px auto;
-padding:14px;
-background:#5f259f;
-color:#fff;
-text-decoration:none;
-border-radius:12px;
-font-size:16px;
-font-weight:bold;
-text-align:center;">
-Pay via PhonePe
-</a>
-
-<div class="upi-icons">
-  <i class="fab fa-google-pay gpay"></i>
-  <i class="fa-solid fa-mobile-screen phonepe"></i>
-  <i class="fa-solid fa-wallet paytm"></i>
-</div>
-
-<p style="font-size:12px;opacity:0.7">
-PhonePe • Google Pay • Paytm Supported
-</p>
-</div>
 
 <button onclick="submitOrder()">Submit Order</button>
 </div>
 
-<div class="success hidden" id="successBox">
+<div class="success" id="successBox">
 ✅ Order Submitted Successfully<br><br>
 ⏳ Payment verification in progress<br>
 📲 Our team will contact you shortly
@@ -199,54 +138,70 @@ PhonePe • Google Pay • Paytm Supported
 
 </div>
 
-<a class="wa" href="https://wa.me/91XXXXXXXXXX" target="_blank">WA</a>
+<div class="footer">
+© 2025 PREMIUM SOCIAL MEDIA
+</div>
+
+</div>
 
 <script>
-const rates = {
-  "Instagram Followers": 3.33,
-  "Instagram Likes": 6.6,
-  "Instagram Views": 14.2,
-  "Facebook Followers": 3.33,
-  "YouTube Subscribers": 2.5,
-  "YouTube Views": 8.3,
-  "Twitter Followers": 3.33
-};
+const amount=document.getElementById("amount");
+const service=document.getElementById("service");
+const quantity=document.getElementById("quantity");
+const url=document.getElementById("url");
+const urlOk=document.getElementById("urlOk");
+const urlBad=document.getElementById("urlBad");
 
-amount.addEventListener("input",()=>{
-  let amt = amount.value;
-  let srv = service.value;
-  if(amt>0){
-    qty.value = Math.floor(amt * rates[srv]) + " Units";
-    qrBox.classList.remove("hidden");
+amount.addEventListener("input",calc);
+service.addEventListener("change",calc);
 
-    let upi="hh0598332-2@okhdfcbank";
-    phonepeBtn.href =
-      "phonepe://pay?pa="+upi+
-      "&pn=Premium%20Social%20Media"+
-      "&am="+amt+
-      "&cu=INR";
+function calc(){
+  if(!service.value || !amount.value){
+    quantity.value="";
+    return;
+  }
+  let rate = service.value.split("|")[1];
+  quantity.value = Math.floor(amount.value / rate) + " units";
+}
+
+url.addEventListener("input",()=>{
+  const v = url.value.toLowerCase();
+  if(
+    v.includes("instagram.com") ||
+    v.includes("facebook.com") ||
+    v.includes("youtube.com") ||
+    v.includes("youtu.be") ||
+    v.includes("twitter.com") ||
+    v.includes("x.com")
+  ){
+    urlOk.style.display="block";
+    urlBad.style.display="none";
   }else{
-    qty.value="";
-    qrBox.classList.add("hidden");
+    urlOk.style.display="none";
+    urlBad.style.display="block";
   }
 });
 
-function submitOrder(){
-  if(amount.value==""||url.value==""||utr.value==""){
+function showPayment(){
+  if(!service.value || !amount.value || !url.value){
     alert("Please fill all fields");
     return;
   }
-  orderBox.style.display="none";
-  successBox.classList.remove("hidden");
+  if(urlOk.style.display!="block"){
+    alert("Please enter a valid URL");
+    return;
+  }
+  document.getElementById("qrBox").style.display="block";
+}
 
-  let msg = encodeURIComponent(
-    "New Order ✅\nService: "+service.value+
-    "\nAmount: ₹"+amount.value+
-    "\nQuantity: "+qty.value+
-    "\nURL: "+url.value+
-    "\nUTR: "+utr.value
-  );
-  window.open("https://wa.me/91XXXXXXXXXX?text="+msg,"_blank");
+function submitOrder(){
+  const utr=document.getElementById("utr").value;
+  if(utr==""){
+    alert("Please enter UTR number");
+    return;
+  }
+  document.getElementById("qrBox").style.display="none";
+  document.getElementById("successBox").style.display="block";
 }
 </script>
 
