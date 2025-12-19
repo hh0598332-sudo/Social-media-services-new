@@ -4,173 +4,188 @@
 <meta charset="UTF-8">
 <title>Premium Social Media Services</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Poppins,Arial,sans-serif;background:#0b0b14;color:#fff}
-header{padding:22px 14px;text-align:center;background:linear-gradient(135deg,#7f00ff,#e100ff)}
-header h1{margin:0;font-size:26px}
-header p{margin:6px 0 0;font-size:14px;opacity:.9}
-.luxury{padding:8px;text-align:center;font-size:13px;background:linear-gradient(90deg,#ffd700,#ffb347);-webkit-background-clip:text;color:transparent}
-#counter{background:#111122;text-align:center;padding:8px;font-size:14px}
-.section{padding:14px}
-.box{background:#161627;border-radius:16px;padding:16px}
-h4{margin:10px 0 6px;font-size:14px}
-select,input{width:100%;padding:11px;border:none;border-radius:10px;margin-bottom:8px;font-size:14px}
-input[readonly]{opacity:.9}
-.note{font-size:12px;opacity:.7}
-.upi{margin-top:8px;padding:10px;border-radius:10px;background:#0d0d1a;text-align:center;font-size:14px}
-.qr{text-align:center;margin-top:10px}
-.qr img{width:170px;background:#fff;border-radius:12px;padding:8px}
-.check{display:flex;align-items:center;gap:8px;font-size:13px;margin:6px 0}
-button{width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,#ff512f,#dd2476);color:#fff;font-size:16px;cursor:pointer;opacity:.4}
-button.active{opacity:1}
-footer{text-align:center;font-size:12px;opacity:.6;padding:10px}
-#successPopup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:9999}
-#successPopup div{background:#161627;padding:25px;border-radius:16px;text-align:center}
+body{
+  background:#0b0f1f;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  margin:0;
+}
+.card{
+  background:#12162b;
+  margin:15px;
+  padding:15px;
+  border-radius:16px;
+}
+h2{text-align:center;margin:10px 0}
+input,select,button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:10px;
+  border:none;
+  font-size:15px;
+}
+button{
+  background:#25d366;
+  color:#000;
+  font-weight:bold;
+}
+.hidden{display:none}
+.small{font-size:12px;opacity:.7}
+.counter{
+  text-align:center;
+  font-size:16px;
+}
+.qr{
+  background:#fff;
+  color:#000;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+}
+.qr img{width:200px}
+.float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25d366;
+  color:#000;
+  padding:14px;
+  border-radius:50%;
+  font-weight:bold;
+  text-decoration:none;
+}
 </style>
 </head>
 
 <body>
 
-<header>
-<h1>Premium Social Media Services</h1>
-<p>Instagram • YouTube • Facebook • Telegram</p>
-</header>
+<!-- 🔥 LIVE ORDERS -->
+<div class="card counter">
+🔥 Today Orders: <b id="orders">500</b>+
+</div>
 
-<div class="luxury">⚡ Fast Delivery • Secure Payments • Live Orders • Trusted ⚡</div>
-<div id="counter">🔥 Today Orders: <b id="orderCount">500</b></div>
+<h2>🔥 SOCIAL MEDIA AGENCY 🔥</h2>
 
-<div class="section">
-<div class="box">
+<!-- MAIN FORM -->
+<div class="card">
 
-<h4>Select Service</h4>
-<select id="service" onchange="calcFromAmount()">
+<select id="service">
 <option value="">Select Service</option>
-<option value="insta_views">Instagram Views</option>
-<option value="insta_likes">Instagram Likes</option>
-<option value="insta_followers">Instagram Followers</option>
-<option value="yt_views">YouTube Views</option>
-<option value="yt_likes">YouTube Likes</option>
-<option value="yt_subs">YouTube Subscribers</option>
-<option value="fb_views">Facebook Views</option>
-<option value="fb_likes">Facebook Likes</option>
-<option value="fb_followers">Facebook Followers</option>
-<option value="tg_members">Telegram Members</option>
-<option value="tg_views">Telegram Views</option>
+<option value="Instagram Followers">Instagram Followers</option>
+<option value="YouTube Subscribers">YouTube Subscribers</option>
+<option value="Telegram Members">Telegram Members</option>
 </select>
 
-<h4>Enter Amount (₹)</h4>
-<input id="amount" type="number" placeholder="Minimum varies by service" oninput="calcFromAmount()">
-<p class="note">Quantity auto-calculated • ₹18 platform fee included</p>
+<input id="amount" type="number" placeholder="Enter Amount ₹">
 
-<h4>Estimated Quantity</h4>
-<input id="qty" readonly placeholder="Auto calculated">
+<input id="quantity" placeholder="Estimated Quantity" readonly>
 
-<h4>Profile / Video URL</h4>
-<input id="url" placeholder="https://">
+<input id="url" placeholder="Profile / Video URL">
 
-<h4>Base Amount</h4>
-<input id="base" readonly placeholder="₹0">
+<div id="qrBox" class="hidden">
 
-<h4>Grand Total</h4>
-<input id="grandTotal" readonly placeholder="₹0">
-
-<h4>UTR Number</h4>
-<input id="utr" placeholder="UTR Number">
-
-<div class="upi"><b>UPI ID</b><br>hh0598332-2@okhdfcbank</div>
-<div class="qr"><img id="qr"></div>
-
-<div class="check">
-<input type="checkbox" id="paid" onchange="submitBtn.classList.toggle('active',this.checked)">
-<label>I have completed the payment</label>
+<div class="qr">
+<p><b>Pay via UPI</b></p>
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=hh0598332-2@okhdfcbank">
+<p>UPI ID: <b>hh0598332-2@okhdfcbank</b></p>
 </div>
 
-<button id="submitBtn" onclick="sendOrder()">Submit Order</button>
+<input id="utr" placeholder="Enter UTR Number">
+
+<label class="small">
+<input type="checkbox" id="paid"> I have completed the payment
+</label>
 
 </div>
+
+<button onclick="submitOrder()">Submit Order</button>
+
+<p class="small">
+⚠ Orders are processed after manual payment verification
+</p>
+
 </div>
 
-<footer>© Premium Social Media Services</footer>
-
-<div id="successPopup">
-<div>
-<h3 style="color:#4caf50">✅ Payment Successful</h3>
-<p>Your order is being processed</p>
-</div>
-</div>
+<!-- WhatsApp Floating -->
+<a class="float" href="#" onclick="sendWhatsApp()">WA</a>
 
 <script>
-// Live counter 500+
-let count=500;
-setInterval(()=>{count+=Math.floor(Math.random()*3);orderCount.innerText=count;},4000);
+// 🔥 LIVE COUNTER
+let c=500;
+setInterval(()=>{
+  c+=Math.floor(Math.random()*2);
+  document.getElementById("orders").innerText=c;
+},4000);
 
-// Rates per 1000
-const rate={
-insta_views:80, insta_likes:110,
-yt_views:90, yt_likes:130, yt_subs:220,
-fb_views:75, fb_likes:120, fb_followers:170,
-tg_members:290, tg_views:70
+// 💰 SERVICE RATES (per unit)
+const rates={
+ "Instagram Followers":0.08,
+ "YouTube Subscribers":0.15,
+ "Telegram Members":0.20
 };
 
-// Minimum amount per service
-const minAmt={
-insta_followers:199, yt_subs:299, fb_followers:299, tg_members:299,
-insta_views:199, insta_likes:199, yt_views:199, yt_likes:199,
-fb_views:199, fb_likes:199, tg_views:199
-};
+// AUTO QUANTITY
+document.getElementById("amount").addEventListener("input",calcQty);
+document.getElementById("service").addEventListener("change",calcQty);
 
-const platformFee=18;
-
-// QR
-const upi="hh0598332-2@okhdfcbank";
-qr.src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa="+upi;
-
-// Amount -> Quantity logic
-function calcFromAmount(){
-  if(!service.value || !amount.value){
-    qty.value=""; base.value="₹0"; grandTotal.value="₹0"; return;
-  }
-  let s=service.value, amt=Number(amount.value);
-  if(amt < minAmt[s]){
-    qty.value="Minimum ₹"+minAmt[s]+" required";
-    base.value="—"; grandTotal.value="—"; return;
-  }
-
-  let ratePerK = rate[s] || 0;
-
-  // Instagram Followers slab pricing
-  if(s==="insta_followers"){
-    if(amt>=199 && amt<1000) ratePerK=320;
-    else if(amt>=1000 && amt<3000) ratePerK=240;
-    else if(amt>=3000 && amt<10000) ratePerK=250;
-    else ratePerK=220;
-  }
-
-  let estimatedQty = Math.floor((amt / ratePerK) * 1000);
-  qty.value = estimatedQty + " (approx)";
-  base.value = "₹" + amt;
-  grandTotal.value = "₹" + (amt + platformFee);
+function calcQty(){
+ let s=document.getElementById("service").value;
+ let a=document.getElementById("amount").value;
+ if(!rates[s]||!a){
+   document.getElementById("quantity").value="";
+   return;
+ }
+ let q=Math.floor(a/rates[s]*1000);
+ document.getElementById("quantity").value=q+" units";
 }
 
-function sendOrder(){
-  if(!paid.checked||!service.value||!amount.value||!url.value||!utr.value){
-    alert("Please fill all details & confirm payment"); return;
-  }
-  successPopup.style.display="flex";
-  let msg=
-  "NEW ORDER%0A"+
-  "Service: "+service.options[service.selectedIndex].text+"%0A"+
-  "Amount: ₹"+amount.value+"%0A"+
-  "Estimated Qty: "+qty.value+"%0A"+
-  "Grand Total: "+grandTotal.value+"%0A"+
-  "URL: "+url.value+"%0A"+
-  "UTR: "+utr.value;
+// SUBMIT
+function submitOrder(){
+ let s=document.getElementById("service").value;
+ let a=document.getElementById("amount").value;
+ let u=document.getElementById("url").value;
+ let utr=document.getElementById("utr").value;
+ let paid=document.getElementById("paid").checked;
 
-  setTimeout(()=>{
-    successPopup.style.display="none";
-    window.open("https://t.me/yourtelegramusername?text="+msg,"_blank");
-  },2000);
+ if(!s||!a||!u){
+   alert("Fill all details first");
+   return;
+ }
+
+ document.getElementById("qrBox").classList.remove("hidden");
+
+ if(paid && utr.length>=8){
+   sendWhatsApp();
+   sendTelegram();
+   alert("✅ Order submitted successfully!\nPayment will be verified shortly.");
+ }
+}
+
+// WHATSAPP
+function sendWhatsApp(){
+ let msg=`🔥 NEW ORDER 🔥
+Service: ${service.value}
+Amount: ₹${amount.value}
+Quantity: ${quantity.value}
+URL: ${url.value}
+UTR: ${utr.value}`;
+ window.open("https://wa.me/91XXXXXXXXXX?text="+encodeURIComponent(msg));
+}
+
+// TELEGRAM
+function sendTelegram(){
+ let token="YOUR_BOT_TOKEN";
+ let chatId="YOUR_CHAT_ID";
+ let text=`🔥 NEW ORDER
+Service: ${service.value}
+Amount: ₹${amount.value}
+Quantity: ${quantity.value}
+URL: ${url.value}
+UTR: ${utr.value}`;
+ fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`);
 }
 </script>
 
